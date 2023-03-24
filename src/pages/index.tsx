@@ -5,12 +5,12 @@ import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 
 export default function Home() {
+  const baseurl = process.env.NEXT_PUBLIC_API_URL
   const [loading,setLoading] = useState(false);
   const [data, setData] = useState<any>(null)
   const [showSummary, setShowSummary] = useState(false);
   const [typeFlag, setTypeFlag] = useState(true)
-
-
+  console.log("BASE",baseurl)
   const onChange = async (e: ChangeEvent<HTMLInputElement>, flag: boolean) => {
     if (! e.target.files) {
       console.log("Err: No Files")
@@ -33,7 +33,7 @@ export default function Home() {
       },
       validateStatus: (status: any) => true,
     };
-    const response = await axios.post(`/api/upload?type=${flag ? 'resume' : 'job'}`, formData, config);
+    const response = await axios.post(`${baseurl}/api/upload?type=${flag ? 'resume' : 'job'}`, formData, config);
     if (flag) {
       
       setData(response.data.data)
@@ -44,21 +44,21 @@ export default function Home() {
   };
 
   const handleOrgs = async () => {
-    const response = await axios.get("/api/get-organizations")
+    const response = await axios.get(`${baseurl}/api/get-organizations`)
     console.log("ORGANIZATIONS",response.data)
   };
   const handleWss = async () => {
-    const response = await axios.get("/api/get-workspaces")
+    const response = await axios.get(`${baseurl}/api/get-workspaces`)
     console.log("WORKSPACES", response.data);
 
   };
   const handleCols = async () => {
-    const response = await axios.get("/api/get-collections")
+    const response = await axios.get(`${baseurl}/api/get-collections`)
     console.log("Collections", response.data);
 
   };
   const handleDocs = async () => {
-    const response = await axios.get("/api/get-documents")
+    const response = await axios.get(`${baseurl}/api/get-documents`)
     console.log("Documents", response.data);
   };
 
