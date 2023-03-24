@@ -44,11 +44,15 @@ export default function Home() {
   };
 
   const handleOrgs = async () => {
-    const response = await axios.get(`${baseurl}/api/get-organizations`)
+    const response = await axios.get(`${baseurl}/api/get-organizations`, {
+      withCredentials: false,
+    });
     console.log("ORGANIZATIONS",response.data)
   };
   const handleWss = async () => {
-    const response = await axios.get(`${baseurl}/api/get-workspaces`)
+    const response = await axios.get(`${baseurl}/api/get-workspaces`, {
+      
+    })
     console.log("WORKSPACES", response.data);
 
   };
