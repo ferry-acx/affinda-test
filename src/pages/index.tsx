@@ -11,7 +11,7 @@ export default function Home() {
   const [typeFlag, setTypeFlag] = useState(true)
 
 
-  const onChange = async (e: ChangeEvent<HTMLInputElement>, flag:boolean) => {
+  const onChange = async (e: ChangeEvent<HTMLInputElement>, flag: boolean) => {
     if (! e.target.files) {
       console.log("Err: No Files")
       return;
@@ -34,8 +34,12 @@ export default function Home() {
       validateStatus: (status: any) => true,
     };
     const response = await axios.post(`/api/upload?type=${flag ? 'resume' : 'job'}`, formData, config);
-    // console.log("RR", response.data.data)
-    setData(response.data.data)
+    if (flag) {
+      
+      setData(response.data.data)
+    } else {
+      console.log(response.data.data)
+    }
     setLoading(false)
   };
 
@@ -74,13 +78,13 @@ export default function Home() {
           </label>
           {loading && Spinner}
         </div>
-        <div className="bg-red-100">
-          <label htmlFor="upload">
+        <div className="bg-blue-100 mt-4">
+          <label htmlFor="upload-jd">
             <div>upload to job description</div>
             <input
               className="hidden"
               type="file"
-              id="upload"
+              id="upload-jd"
               onChange={(e) => onChange(e, false)}
             />
           </label>

@@ -15,20 +15,12 @@ const JOB_DESCRIPTION_ID = "byRRRhkI"
 export const uploadResume = async (file: string, flag: boolean) => {
   const readStream = fs.createReadStream(file);
 
-  // const organizations = await affindaClient.getAllOrganizations()
-  // const workspaces = await affindaClient.getAllWorkspaces("mgQHXdqM");
-  // const documents = await affindaClient.getAllDocuments({
-  //   collection: "UkVlsKyy",
-  // });
-  // const workspace = await affindaClient.getAllWorkspaces()
-  // const tx = await affindaClient.getAllCollections()
   const response = await client.createDocument({
     file: readStream,
     workspace: MY_WORKSPACE,
     collection: flag ? RESUME_PARSER_ID : JOB_DESCRIPTION_ID,
   });
   
-  // return {documents, organizations, workspaces};
   return response
 }
 
