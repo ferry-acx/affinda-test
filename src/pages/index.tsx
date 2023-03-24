@@ -120,7 +120,7 @@ export default function Home() {
             ))}
           </div>
           <div>Linkedin: {data.linkedin}</div>
-          <div>location: {data.location}</div>
+          <div>location: {data.location && data.location.country}</div>
           <div>Birthdate: {data.dateOfBirth}</div>
           <div>Objective: {data.objective}</div>
           <div>
@@ -162,7 +162,7 @@ export default function Home() {
                       new Date(work.dates.endDate).toLocaleDateString()}
                   </span>
                 )}
-                <p className="font-medium">{work.location && work.location.formatted}</p>
+                <p className="font-medium">{work.location && work.location.ed}</p>
                 <p>{work.jobDescription}</p>
               </div>
             ))}
