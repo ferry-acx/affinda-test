@@ -10,7 +10,7 @@ export default function Home() {
   const [data, setData] = useState<any>(null)
   const [showSummary, setShowSummary] = useState(false);
   const [typeFlag, setTypeFlag] = useState(true)
-  console.log("BASE",baseurl)
+  console.log("BASEs",baseurl)
   const onChange = async (e: ChangeEvent<HTMLInputElement>, flag: boolean) => {
     if (! e.target.files) {
       console.log("Err: No Files")
