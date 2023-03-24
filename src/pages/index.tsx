@@ -46,6 +46,7 @@ export default function Home() {
   const handleOrgs = async () => {
     const response = await axios.get(`${baseurl}/api/get-organizations`, {
       withCredentials: false,
+      headers: { "Access-Control-Allow-Origin": "*" },
     });
     console.log("ORGANIZATIONS",response.data)
   };
