@@ -34,7 +34,8 @@ export default function Home() {
       validateStatus: (status: any) => true,
     };
     const response = await axios.post(`/api/upload?type=${flag ? 'resume' : 'job'}`, formData, config);
-    setData(response.data)
+    // console.log("RR", response.data.data)
+    setData(response.data.data)
     setLoading(false)
   };
 
@@ -161,7 +162,7 @@ export default function Home() {
                       new Date(work.dates.endDate).toLocaleDateString()}
                   </span>
                 )}
-                <p className="font-medium">{work.location.formatted}</p>
+                <p className="font-medium">{work.location && work.location.formatted}</p>
                 <p>{work.jobDescription}</p>
               </div>
             ))}
@@ -177,7 +178,7 @@ export default function Home() {
                   )
                 </span>
                 <p>Institute: {ed.organization}</p>
-                <p>accrediation-education: {ed.accreditation.education}</p>
+                <p>accrediation-education: {ed.accreditation.inputStr}</p>
               </div>
             ))}
           </div>
