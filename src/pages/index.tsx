@@ -50,6 +50,7 @@ export default function Home() {
       config
     );
     setData(response.data.data);
+    !flag && setPretty(false)
     setLoading(false);
   };
 

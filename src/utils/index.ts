@@ -50,12 +50,12 @@ export const getAllDocuments = async (id = RESUME_PARSER_ID) => {
 
 
 const oneMegabyteInBytes = 1000000;
-export const outputFolderName = "./public";
+export const outputFolderName = "./public/uploads";
 
 export const upload = multer({
   limits: { fileSize: oneMegabyteInBytes * 2 },
   storage: multer.diskStorage({
-    destination: "./",
+    destination: outputFolderName,
     filename: (req, file, cb) => cb(null, file.originalname),
   }),
 });
