@@ -24,7 +24,7 @@ export default function Home() {
     formData.append('file', file)
 
     const config = {
-      // headers: { "content-type": "multipart/form-data" },
+      headers: { "content-type": "multipart/form-data" },
       onUploadProgress: (event: any) => {
         console.log(
           `Current progress:`,
