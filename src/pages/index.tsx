@@ -45,7 +45,7 @@ export default function Home() {
       validateStatus: (status: any) => true,
     };
     const response = await axios.post(
-      `${baseurl}/api/upload?type=${flag ? "resume" : "job"}`,
+      `/api/upload?type=${flag ? "resume" : "job"}`,
       formData,
       config
     );
@@ -54,18 +54,20 @@ export default function Home() {
   };
 
   const handleOrgs = async () => {
-    const response = await axios.get(`${baseurl}/api/get-organizations`, {});
+    const response = await axios.get(`/api/get-organizations`, {
+      
+    });
   };
   const handleWss = async () => {
-    const response = await axios.get(`${baseurl}/api/get-workspaces`, {});
+    const response = await axios.get(`/api/get-workspaces`, {});
     console.log("WORKSPACES", response.data);
   };
   const handleCols = async () => {
-    const response = await axios.get(`${baseurl}/api/get-collections`);
+    const response = await axios.get(`/api/get-collections`);
     console.log("Collections", response.data);
   };
   const handleDocs = async () => {
-    const response = await axios.get(`${baseurl}/api/get-documents`);
+    const response = await axios.get(`/api/get-documents`);
     console.log("Documents", response.data);
   };
 
@@ -275,7 +277,7 @@ export default function Home() {
             </>
           ) : (
             <>
-              <ReactJson src={parseData(data)} />
+              <ReactJson src={parseData(data)} collapsed={3} />
             </>
           )}
         </div>
