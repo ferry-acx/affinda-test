@@ -26,6 +26,9 @@ const apiRoute = nextConnect({
   },
 });
 
+apiRoute.use(cors({
+  origin:'*',credentials: false
+}))
 apiRoute.use(upload.array("file"));
 
 apiRoute.post(
