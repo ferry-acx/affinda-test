@@ -26,17 +26,20 @@ const apiRoute = nextConnect({
   },
 });
 
-apiRoute.use(
-  cors({
-    origin: "*",
-    credentials: false,
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-  })
-);
+// apiRoute.use(
+//   cors({
+//     origin: "*",
+//     credentials: false,
+//     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+//   })
+// );
 apiRoute.use(upload.array("file"));
 
 apiRoute.post(
-  async (req: NextConnectApiRequest, res: NextApiResponse<ResponseData>) => {
+  async (req: any, res: any) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
     const fileList = fs.readdirSync(outputFolderName);
     const firstFile = `${outputFolderName}/${fileList[0]}`
     const {type} = req.query
