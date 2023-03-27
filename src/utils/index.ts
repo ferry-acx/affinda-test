@@ -55,7 +55,7 @@ export const outputFolderName = "./public";
 export const upload = multer({
   limits: { fileSize: oneMegabyteInBytes * 2 },
   storage: multer.diskStorage({
-    destination: "./public/uploads",
+    destination: "./",
     filename: (req, file, cb) => cb(null, file.originalname),
   }),
 });
