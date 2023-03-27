@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { outputFolderName, removeFile, upload, uploadResume } from '@/utils';
 
 interface NextConnectApiRequest extends NextApiRequest {
-  files: Express.Multer.File[];
+  files: any;
 }
 type ResponseData = any
 
