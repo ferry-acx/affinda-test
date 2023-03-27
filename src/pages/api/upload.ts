@@ -1,6 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import nextConnect from "next-connect";
 import fs from "fs";
+import cors from "cors";
+import nextConnect from "next-connect";
+import { NextApiRequest, NextApiResponse } from "next";
 import { outputFolderName, removeFile, upload, uploadResume } from '@/utils';
 
 interface NextConnectApiRequest extends NextApiRequest {
