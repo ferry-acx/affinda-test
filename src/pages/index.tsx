@@ -54,9 +54,15 @@ export default function Home() {
   };
 
   const handleOrgs = async () => {
-    const response = await axios.get(`/api/get-organizations`, {
+    // const response = await axios.get(`/api/get-organizations`, {
       
-    });
+    // });
+
+    const response = await fetch(`/api/get-organizations`, {
+      mode: "no-cors"
+    })
+    const x = await response.json()
+    console.log("res", x)
   };
   const handleWss = async () => {
     const response = await axios.get(`/api/get-workspaces`, {});
