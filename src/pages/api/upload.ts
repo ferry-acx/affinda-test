@@ -26,9 +26,13 @@ const apiRoute = nextConnect({
   },
 });
 
-apiRoute.use(cors({
-  origin:'*',credentials: false
-}))
+apiRoute.use(
+  cors({
+    origin: "*",
+    credentials: false,
+    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  })
+);
 apiRoute.use(upload.array("file"));
 
 apiRoute.post(
