@@ -31,12 +31,11 @@ apiRoute.use(upload.array("file"));
 
 apiRoute.post(
   async (req: any, res: any) => {
-    await NextCors(req, res, {
-      // Options
-      methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-      origin: "*",
-      optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
+    // await NextCors(req, res, {
+    //   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    //   origin: "*",
+    //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    // });
     const fileList = fs.readdirSync(outputFolderName);
     const firstFile = `${outputFolderName}/${fileList[0]}`
     const {type} = req.query
